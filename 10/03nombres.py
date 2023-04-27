@@ -5,7 +5,6 @@
 import configparser
 import os
 import psycopg2
-import sys
 
 # Cargamos el archivo de configuración y las variables relevantes
 PCONFIG=os.getenv('PCONFIG', './padron.ini')
@@ -19,7 +18,7 @@ NOMBRE_BDD=os.getenv('NOMBRE_BDD', config['BDD'].get('nombre'))
 cnx=psycopg2.connect(dbname=NOMBRE_BDD, user=USUARIO_BDD, host=SERVIDOR_BDD, password=CLAVE_BDD)
 cur=cnx.cursor()
 
-cur.execute("SELECT count(1) FROM ciudadano WHERE nombre LIKE 'JOSE %' OR nombre LIKE '% JOSE';")
+cur.execute("SELECT count(1) FROM ciudadano WHERE nombre LIKE 'JOSE %' OR nombre LIKE '% JOSE' or nombre = 'JOSE';")
 (count,)= cur.fetchone();
 print("Hay {} personas con el nombre Jose en el padrón electoral.".format(count));
 cnx.close()
