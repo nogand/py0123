@@ -9,4 +9,8 @@ El juego debe estar escrito como un API REST y un cliente web y de modo texto.
 
 El API debe contemplar al menos las siguientes operaciones:
 
-* Nuevo juego
+* **NuevoJuego**: Arranca un nuevo juego, creando un nuevo mazo de naipes y entregándole las fichas al jugador.
+* **EstadoJuego**: Recibe el identificador del juego y devuelve su estado actual.
+* **NuevaPartida**: Reparte las cartas iniciales al jugador y la casa, a partir del estado actual del juego. No debe funcionar si hay una partida en juego.
+* **TerminarPartida**: Determina el estado del juego y recoge la apuesta o paga la ganancia al jugador y deja el juego listo para una nueva partida.
+  * Entre estos dos estados deben diseñarse y permitirse las operaciones requeridas para el juego de BlackJack.
